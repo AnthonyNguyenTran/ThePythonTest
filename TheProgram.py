@@ -10,8 +10,7 @@ con = psycopg2.connect(
 
 
 cur = con.cursor()
-#uncomment below to insert a part into the db
-#cur.execute("insert into pc_parts (part_id, part_name, brand, price) values (112, 'Storage', 'Dell, 49.99)")
+cur.execute("insert into pc_parts (part_id, part_name, brand, price) values (112, 'Storage', 'Dell, 49.99)")
 cur.execute("select part_id, part_name, brand, price from pc_parts")
 
 rows = cur.fetchall()
@@ -19,8 +18,8 @@ rows = cur.fetchall()
 for r in rows:
     print (f"Part_ID: {r[0]} Part_Name: {r[1]} Brand: {r[2]} Price: {r[3]}")
 
-#uncomment below to commit the change
-#con.commit()
+
+con.commit()
 
 cur.close()
 
